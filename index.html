@@ -3,45 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Cadastro de Aluno
-    </title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projeto Comissões</title>
 </head>
 <body>
-    <h1>
-        Cadastro de Aluno
-    </h1>
+    <h1>Calcula a Comissão dos Vendedores</h1>
+    <hr>
+    
+    <form method="GET">
+        
+        Nome:
+        <br>
+        <input type="text" name="txtnome" > <br>
+        <br>
 
-    <form action="enviar.php" method="post">
-        <label for="tNome">
-            Nome:
-        </label>
-        <br/>
-        <input type="text" name="txtNome" id="tNome" size="100" maxlength="100"
-               placeholder="Digite o Nome" required>
-        <br/>
-        <br/>
+        Salario Fixo:
+        <br>
+        <input type="text" name="txtsalfixo"> <br>
+        <br>
+    
+        Total Vendido:
+        <br>
+        <input type="text" name="txtvendas"> <br>
+        <br>
 
-        <label for="tEmail">
-            Email:
-        </label>
-        <br/>
-        <input type="email" name="txtEmail" id="tEmail" size="100" maxlength="100"
-               placeholder="Digite o Email" required>
-        <br/>  
-        <br/>
-
-        <label for="tCpf">
-            C.P.F.:
-        </label>
-        <br/>
-        <input type="text" name="txtCpf" id="tCpf" size="20" maxlength="20"
-               placeholder="Digite o C.P.F." required>
-        <br/>
-        <br/>
-                  
-        <input type="submit" value="Enviar"/>
-        <input type="reset" value="Cancelar">
+        % de Comissão:
+        <br>
+        <input type="text" name="txtcomissao"> <br>
+        <br>
+        
+        <input type="submit" name="btncalcular" value="Calcular" >
+        
     </form>
+
+    <?php
+    
+        if ($_GET) {
+        
+            //Rcebe dados do formulário
+            $nome=$_GET['txtnome'];
+            $salfixo=$_GET['txtsalfixo'];
+            $vendas=$_GET['txtvendas'];
+            $comissao=$_GET['txtcomissao'];
+
+            // Calcula Comissao
+            $vrcomissao = ($vendas*$comissao)/100;
+            $saltotal = $salfixo+$vrcomissao;
+
+            // Mostrando Resultado
+            
+            echo "<br> <hr> O Salário Total de $nome é $saltotal";
+            echo "<hr>";
+        
+        }
+    ?>
+
 </body>
 </html>
